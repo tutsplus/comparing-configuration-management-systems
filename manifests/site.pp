@@ -1,5 +1,5 @@
 node default {
-  include nginx
+  class { 'nginx': }
 
   nginx::resource::vhost { 'default':
     listen_options => 'default',
