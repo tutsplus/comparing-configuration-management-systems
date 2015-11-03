@@ -1,0 +1,11 @@
+#!/bin/bash -e
+
+/usr/bin/puppet apply /etc/puppet/manifests/site.pp
+
+if [ $? -eq 0 ]; then
+  /usr/bin/logger -i "Puppet ran successfully" -t "puppet-run"
+  exit 0
+else
+  /usr/bin/logger -i "Puppet run failed. Please run Puppet manually" -t "puppet-run"
+  exit 1
+fi
