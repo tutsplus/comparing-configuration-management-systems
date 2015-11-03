@@ -6,11 +6,11 @@ node default {
   # }
 }
 
-node database.localdomain {
+node "database.localdomain" {
   class { 'tp-rails-app::database': }
 }
 
-node web.localdomain {
+node "web.localdomain" {
   class { 'tp-rails-app::web':
     name => 'tutsplus',
   }
