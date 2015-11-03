@@ -5,3 +5,13 @@ node default {
   #   name => 'tutsplus',
   # }
 }
+
+node database.localdomain {
+  class { 'tp-rails-app::database': }
+}
+
+node web.localdomain {
+  class { 'tp-rails-app::web':
+    name => 'tutsplus',
+  }
+}
