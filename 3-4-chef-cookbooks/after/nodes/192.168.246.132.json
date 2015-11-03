@@ -1,0 +1,26 @@
+{
+  "run_list": [
+    "recipe[rvm::system]",
+    "recipe[postgresql::server]",
+    "recipe[nodejs]",
+    "recipe[nginx_passenger]",
+    "recipe[rails_app]"
+  ],
+  "automatic": {
+    "ipaddress": "192.168.246.132"
+  },
+  "postgresql": {
+    "password": {
+      "postgres": "md5b85804e87374cfbf4f7c7ad9b20dc699"
+    }
+  },
+  "rails_app": {
+    "location": "/vagrant/rails_app"
+  },
+  "rvm": {
+    "installer_flags": "head",
+    "default_ruby": "2.2",
+    "install_rubies": true,
+    "group_users": ["vagrant"]
+  }
+}

@@ -1,0 +1,8 @@
+production:
+  adapter: postgresql
+  encoding: utf8
+  database: rails_production
+  username: rails
+  password: password
+  host: 192.168.246.138
+  port: 15432

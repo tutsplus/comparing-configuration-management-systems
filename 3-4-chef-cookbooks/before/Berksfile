@@ -1,0 +1,7 @@
+source "https://api.berkshelf.com"
+
+cookbook 'database'
+cookbook 'postgresql', '~> 3.4.20'
+cookbook 'nodejs', '~> 2.4.2'
+cookbook 'rvm', '~> 0.9.4'
+cookbook 'nginx_passenger', '~> 0.5.7'

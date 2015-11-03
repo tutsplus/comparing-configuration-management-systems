@@ -1,0 +1,23 @@
+{
+  "name": "database",
+  "description": "Database server",
+  "json_class": "Chef::Role",
+  "chef_type": "role",
+  "run_list": [
+    "recipe[postgresql::server]",
+    "recipe[rails_app::database]"
+  ],
+  "default_attributes": {
+    "postgresql": {
+      "config": {
+        "listen_addresses": "*"
+      },
+      "password": {
+        "postgres": "md5b85804e87374cfbf4f7c7ad9b20dc699"
+      },
+      "pg_hba": [
+        { "type": "host", "db": "all", "user": "all", "addr": "192.168.246.0/24", "method": "md5" }
+      ]
+    }
+  }
+}

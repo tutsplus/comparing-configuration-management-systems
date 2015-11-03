@@ -1,0 +1,12 @@
+{
+  "name": "vagrant",
+  "chef_type": "environment",
+  "json_class": "Chef::Environment",
+  "default_attributes": {
+    "postgresql": {
+      "config": {
+        "port": 15432
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "database",
+  "user": {
+    "encrypted_data": "4ToZbeH7BXld52IlElagK1pXmhapmWWJuPiy6wCVCK4=\n",
+    "iv": "6jxmoyqaN8LleTVGnWsoig==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "password": {
+    "encrypted_data": "JufoeFwxG4f76gTgmvHgvurnOABE17ocX9XRtSVkPQs=\n",
+    "iv": "KgfP/HN3XKMPWjhtY/UvoQ==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  }
+}

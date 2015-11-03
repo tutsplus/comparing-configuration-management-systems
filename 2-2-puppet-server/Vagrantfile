@@ -1,0 +1,32 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure(2) do |config|
+  config.vm.box = "puppetlabs/ubuntu-14.04-64-nocm"
+
+  config.vm.network "private_network", ip: "192.168.247.131"
+
+  config.vm.define :puppetmaster do |master|
+    master.vm.hostname = "puppetmaster"
+
+    master.vm.provider "virtualbox" do |v|
+      v.memory = 4096
+      v.cpus = 4
+    end
+
+    master.vm.provider "vmware_fusion" do |v|
+      v.vmx["memsize"] = "4096"
+      v.vmx["numvcpus"] = "4"
+    end
+  end
+
+  config.vm.define :agent do |agent|
+    agent.vm.hostname = "agent"
+
+    agent.vm.network "private_network", ip: "192.168.246.132"
+
+    agent.vm.provision :shell, inline: <<-SHELL
+      sudo su -c 'echo "192.168.246.131 puppetmaster puppet" >> /etc/hosts'
+    SHELL
+  end
+end

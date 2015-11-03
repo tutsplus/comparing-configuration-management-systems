@@ -1,0 +1,7 @@
+production:
+  adapter: postgresql
+  encoding: utf8
+  database: rails_production
+  username: rails
+  password: password
+  host: localhost

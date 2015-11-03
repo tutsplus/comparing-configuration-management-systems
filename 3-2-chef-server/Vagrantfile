@@ -1,0 +1,51 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure(2) do |config|
+  config.vm.box = "bento/ubuntu-14.04"
+
+  config.vm.network "private_network", ip: "192.168.50.2"
+
+  config.vm.define :server do |server|
+    server.vm.hostname = "server"
+
+    server.vm.provider "virtualbox" do |v|
+      v.memory = 4096
+      v.cpus = 4
+    end
+
+    server.vm.provider "vmware_fusion" do |v|
+      v.vmx["memsize"] = "4096"
+      v.vmx["numvcpus"] = "4"
+    end
+
+    server.vm.provision "shell", inline: <<-SHELL
+      wget --quiet https://web-dl.packagecloud.io/chef/stable/packages/ubuntu/trusty/chef-server-core_12.2.0-1_amd64.deb
+      sudo dpkg -i chef-server-core_12.2.0-1_amd64.deb
+    SHELL
+  end
+
+  config.vm.define :client do |client|
+    client.vm.hostname = "client"
+    client.vm.network "private_network", ip: "192.168.50.3"
+
+    client.vm.provision "shell", inline: <<-SHELL
+      sudo echo 192.168.50.2 server >> /etc/hosts
+
+      wget --quiet https://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/10.04/x86_64/chef_12.5.1-1_amd64.deb
+      sudo dpkg -i chef_12.5.1-1_amd64.deb
+    SHELL
+  end
+
+  config.vm.define :workstation do |workstation|
+    workstation.vm.hostname = "workstation"
+    workstation.vm.network "private_network", ip: "192.168.50.4"
+
+    workstation.vm.provision "shell", inline: <<-SHELL
+      sudo echo 192.168.50.2 server >> /etc/hosts
+
+      wget --quiet https://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/10.04/x86_64/chef_12.5.1-1_amd64.deb
+      sudo dpkg -i chef_12.5.1-1_amd64.deb
+    SHELL
+  end
+end

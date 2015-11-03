@@ -1,0 +1,23 @@
+DEPENDENCIES
+  nginx (~> 2.7.6)
+
+GRAPH
+  apt (2.9.2)
+  bluepill (2.4.0)
+    rsyslog (>= 0.0.0)
+  build-essential (2.2.4)
+  nginx (2.7.6)
+    apt (~> 2.2)
+    bluepill (~> 2.3)
+    build-essential (~> 2.0)
+    ohai (~> 2.0)
+    runit (~> 1.2)
+    yum-epel (~> 0.3)
+  ohai (2.0.4)
+  packagecloud (0.1.0)
+  rsyslog (2.2.0)
+  runit (1.7.4)
+    packagecloud (>= 0.0.0)
+  yum (3.8.2)
+  yum-epel (0.6.4)
+    yum (~> 3.2)

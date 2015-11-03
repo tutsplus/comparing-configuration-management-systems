@@ -1,0 +1,12 @@
+{
+  "environment": "vagrant",
+  "run_list": [
+    "role[web]"
+  ],
+  "automatic": {
+    "ipaddress": "192.168.246.139"
+  },
+  "rails_app": {
+    "location": "/vagrant/rails_app"
+  }
+}

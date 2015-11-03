@@ -1,0 +1,9 @@
+{
+  "environment": "vagrant",
+  "run_list": [
+    "role[database]"
+  ],
+  "automatic": {
+    "ipaddress": "192.168.246.138"
+  }
+}

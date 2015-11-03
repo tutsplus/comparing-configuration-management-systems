@@ -1,0 +1,11 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure(2) do |config|
+  config.vm.box = "bento/ubuntu-14.04"
+
+  config.vm.provision "shell", inline: <<-SHELL
+    wget -quiet https://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/10.04/x86_64/chef_12.5.1-1_amd64.deb
+    sudo dpkg -i chef_12.5.1-1_amd64.deb
+  SHELL
+end

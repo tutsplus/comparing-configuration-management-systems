@@ -1,0 +1,28 @@
+%nav.navbar.navbar-default.navbar-static-top
+  .container-fluid
+    / Brand and toggle get grouped for better mobile display
+    .navbar-header
+      %button.navbar-toggle.collapsed{"data-target" => "#main-nav", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      =link_to "Tuts+ CMS", root_path, class: "navbar-brand"
+    / Collect the nav links, forms, and other content for toggling
+    #main-nav.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li
+          =link_to "Content", admin_pages_path
+        %li
+          =link_to "Categories", admin_categories_path
+        %li
+          =link_to "Menus", admin_menus_path
+        %li
+          =link_to "Types", admin_types_path
+
+      -if user_signed_in?
+        %ul.nav.navbar-nav.navbar-right
+          %p.navbar-text
+            Signed in as #{current_user.name}.
+            =link_to "Log out.", destroy_user_session_path, method: :delete
+
